@@ -1,4 +1,6 @@
+import 'package:first_project/screendata.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,8 +51,22 @@ class _MyHomePageState extends State<MyHomePage> {
        
         title: Text(widget.title),
       ),
-    body: Column(
-    children: [Image(image: NetworkImage("https://upload.wikimedia.org/wikipedia/commons/7/75/Flag_of_Palestine.png"))],
+    body: SafeArea(
+      child: Container(
+        child: Column(
+        children: [
+                    Image(image: NetworkImage("https://upload.wikimedia.org/wikipedia/commons/7/75/Flag_of_Palestine.png")),
+                    Text('wael',style: TextStyle(fontSize: 100,color: Colors.black,backgroundColor: Colors.grey)),
+                    SizedBox(height:50 ,),
+                    TextButton(onPressed: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder:(context) => Screendata('wael','dahroj')));
+                    }, child: Text('send'),style:ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.blue),
+                padding: MaterialStateProperty.all(EdgeInsets.all(50)),
+                textStyle: MaterialStateProperty.all(TextStyle(fontSize: 30))),),
+                  ],
+        ),
+      ),
     ),
       
     );
